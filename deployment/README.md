@@ -1,13 +1,19 @@
 # Deployment
 
 ### Example
-You have a web server that needs to be deployed in a production environment. You need not ONE, but many such instances of the web server running for obvious reasons. \
-Secondly, when newer versions of application builds become available on the docker registry, you would like to UPGRADE your docker instances seamlessly. However, when you upgrade your instances, you do not want to upgrade all of them at once as we just did. This may impact users accessing our applications, so you may want to upgrade them one after the other. And that kind of upgrade is known as Rolling Updates. \
+You have a web server that needs to be deployed in a production environment. You need not ONE, but many such instances of the web server running for obvious reasons.
+
+Secondly, when newer versions of application builds become available on the docker registry, you would like to UPGRADE your docker instances seamlessly. However, when you upgrade your instances, you do not want to upgrade all of them at once as we just did. This may impact users accessing our applications, so you may want to upgrade them one after the other. And that kind of upgrade is known as Rolling Updates.
+
 Suppose one of the upgrades you performed resulted in an unexpected error and you are asked to undo the recent update. You would like to be able to rollback the changes that were recently carried out.
+
 Finally, you would like to make multiple changes to your environment such as upgrading the underlying WebServer versions, as well as scaling your environment and also modifying the resource allocations. 
+
 You do not want to apply each change immediately after the command is run, instead you would like to apply a pause to your environment, make the changes and then resume so that all changes are rolled-out together.
 
-**All of these capabilities are available with the kubernetes Deployments.** \
+**All of these capabilities are available with the kubernetes Deployments.** 
+
+The Deployment controller creates a child object, a ReplicaSet, to launch the desired Pods. If one of these Pods fails, the ReplicaSet controller will recognize the difference between the current state and the desired state and will try to fix it by launching a new Pod. Instead of using multiple yaml manifests or files for each Pod, you used a single Deployment yaml to launch 3 replicas of the same container.
 
 The deployment provides us with capabilities to upgrade the underlying instances seamlessly using rolling updates, undo changes, and pause and resume changes to deployments.
 
@@ -60,7 +66,9 @@ The second strategy is were we do not destroy all of them at once. Instead we ta
 ```
 kubectl apply -f deployment-definition.yaml
 OR
-kubectl set image deployment/deployment-name [things you wanna change]
+kubectl set image deployment/[deployment-name] [image] [image]:[tag]
+OR
+kubectl edit deployment/[deployment-name]
 ```
 
 ## Rollback

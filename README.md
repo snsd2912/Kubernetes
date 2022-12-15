@@ -31,7 +31,7 @@ It is responsible for managing the cluster, storing information about the member
 
 When you install Kubernetes on a System, you are actually installing the following components:
 
-* API server acts as the front-end for kubernetes. The users, management devices, Command line interfaces all talk to the API server to  interact with the kubernetes cluster.
+* API server acts as the front-end for kubernetes. The single component that you interact with directly is the kube-apiserver. This component’s job is to accept commands that view or change the state of the cluster, including launching Pods.
 * etcd is a distributed reliable key-value store used by kubernetes to store all data used to manage the cluster and responsible for implementing locks within the cluster to ensure there are no conflicts between the Masters. 
 * The scheduler is responsible for distributing work or containers across multiple nodes. It looks for newly created containers and assigns them to Nodes.
 * The controllers are the brain behind orchestration. They are responsible for noticing and responding when nodes, containers or endpoints goes down. The controllers makes decisions to bring up new containers in such cases.
@@ -45,7 +45,10 @@ The kube control tool or kube command line tool is used to deploy and manage app
 ## Kubernetes Concept
 
 * [Pod](pod/README.md)
-* [ReplicaSet](replicaset/README.md)
-* [Deployment](deployment/README.md)
+* Controller Objects (declare a controller object whose job is to manage the state of the Pods.)
+    * [ReplicaSet](replicaset/README.md)
+    * [Deployment](deployment/README.md)
 * [Networking](network/README.md)
 * [Service](service/README.md)
+* Network Policy
+* restrict connection to pod with **namespaces**

@@ -39,7 +39,7 @@ kind: ReplicaSet
 metadata:
   name: rs-name
   labels:
-    [list label of this rc]
+    [list label of this rs]
 spec:
   template: 
     [these lines contain pod definition, including metadata and spec section]

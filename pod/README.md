@@ -1,5 +1,13 @@
 # Pod
 
+A Pod embodies the environment where the containers live, and that environment can accommodate one or more containers.
+
+If there is more than one container in a pod, they are tightly coupled and share resources including networking and storage. 
+- Kubernetes assigns each Pod a unique IP address. 
+- Every container within a Pod shares the network namespace, including IP address and network ports. 
+- Containers within the same Pod can communicate through localhost, 127.0.0.1. 
+- A Pod can also specify a set of storage Volumes, to be shared among its containers.
+
 With kubernetes our ultimate aim is to deploy our application in the form of containers on a set of machines that are configured as 
 worker nodes in a cluster. However, kubernetes does not deploy containers directly on the worker nodes. The containers are encapsulated into a Kubernetes object known as PODs. A POD is a single instance of an application. A POD is the smallest object, that you can create in kubernetes.
 
@@ -20,7 +28,8 @@ A single pod CAN have multiple containers, except for the fact that they are usu
 
 ### Example-2
 
-Sometimes you might have a scenario were you have a helper container, that might be doing some kind of supporting task for our web application such as processing a user entered data, processing a file uploaded by the user. You want these helper containers to live along side your application container. \
+Sometimes you might have a scenario were you have a helper container, that might be doing some kind of supporting task for our web application such as processing a user entered data, processing a file uploaded by the user. You want these helper containers to live along side your application container. 
+
 In that case, you CAN have both of these containers part of the same POD, so that when a new application container is created, the helper is also created and when it dies the helper also dies since they are part of the same POD. The two containers can also communicate with each other directly by referring to each other as ‘localhost’ since they share the same network namespace. Plus they can easily share the same storage space as well. 
 
 ## Definition file
