@@ -48,6 +48,7 @@ The kube control tool or kube command line tool is used to deploy and manage app
 * Controller Objects (declare a controller object whose job is to manage the state of the Pods.)
     * [ReplicaSet](replicaset/README.md)
     * [Deployment](deployment/README.md)
+    * [Job](job/README.md)
 * [Networking](network/README.md)
 * [Service](service/README.md)
 * Network Policy

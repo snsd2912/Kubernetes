@@ -19,6 +19,8 @@ So what are the options to see the webpage?
 * Firstly, if we were to SSH into the kubernetes node at 192.168.1.2, from the node, we would be able to access the POD’s webpage by doing a curl or if the node has a GUI, we could fire up a browser and see the webpage in a browser following the address http://10.244.0.2.
 * Secondly, The kubernetes service is an object just like PODs, Replicaset or Deployments. One of its use case is to listen to a port on the Node and forward requests on that port to a port on the POD running the web application. This type of service is known as a NodePort service because the service listens to a port on the Node and forwards requests to PODs.
 
+## [How it works](./README_explaination.md)
+
 ## Types of Service
 
 There are three types of services, including:
